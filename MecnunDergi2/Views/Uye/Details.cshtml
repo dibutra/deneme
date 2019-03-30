@@ -1,0 +1,65 @@
+﻿@model MecnunDergi2.Models.Uye
+
+@{
+    ViewBag.Title = "Mecnun Dergi - Üye Detay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ÜYE DETAY</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AdSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KullanıcıAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KullanıcıAdı)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sifre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            <img src="@Model.Foto" class="img-circle img-responsive" alt="@Model.AdSoyad" />
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Yetki.YetkiId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Yetki.YetkiId)
+            </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.UyeId }, new { @class = "btn btn-warning" })
+</p>

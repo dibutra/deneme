@@ -1,0 +1,24 @@
+﻿@model MecnunDergi2.Models.Makale
+
+@{
+    ViewBag.Title = Model.Baslik; 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>@Model.Baslik</h2>
+    <!-- Author -->
+    <hr>
+    <!-- Date/Time -->
+    <p>@string.Format("{0: MMMM yyyy}", Model.Tarih) | @Model.Uye.AdSoyad | <a href="#">@Model.Kategori.KategoriAdı</a></p>
+    <hr>
+    <!-- Preview Image -->
+    <img class="img-responsive" width="900" height="300" src="@Model.Foto" alt="Makale Fotoğrafı">
+    <hr>
+    <!-- Post Content -->
+    <p class="lead">
+        @Html.Raw(Model.İcerik)
+    </p>
+    <hr>
+
+</div>

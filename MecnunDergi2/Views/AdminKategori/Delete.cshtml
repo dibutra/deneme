@@ -1,0 +1,32 @@
+﻿@model MecnunDergi2.Models.Kategori
+
+@{
+    ViewBag.Title = "Mecnun Dergi - Kategori Sil";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>KATEGORİ SİL</h2>
+
+<h3>Silmek İstediğinizden Eminmisiniz?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdı)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

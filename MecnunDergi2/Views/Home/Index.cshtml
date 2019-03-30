@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MecnunDergi2.Models.Makale>
+@{
+    ViewBag.Title = "Mecnun Dergi - Ana Sayfa";
+}
+<div>
+    <h1 class="page-header">
+        Mecnun Dergi
+    </h1>
+
+    @foreach (var item in Model)
+    {
+        <article>
+            <h2>
+                <a href="@Url.Action("MakaleDetay","Home")/@item.MakaleId">@item.Baslik</a>
+            </h2>
+            <p>@string.Format("{0: MMMM yyyy}", item.Tarih) | @item.Uye.AdSoyad | <span><a href="#">@item.Kategori.KategoriAdı</a></span></p>
+            <hr />
+            <img class="img-responsive" width="900" height="300" src="@item.Foto" alt=" Makale Fotoğrafı " />
+            <hr />
+            @if (item.İcerik.Length > 150)
+            {
+                <p>
+                    @Html.Raw(item.İcerik.Substring(0, 150)) ...
+                </p>
+            }
+            else
+            {
+                <p>
+                    @Html.Raw(item.İcerik) ...
+                </p>
+            }
+            <a class="btn btn-primary" href="@Url.Action("MakaleDetay","Home")/@item.MakaleId">Devamını Oku <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <hr />
+        </article>
+    }
+
+</div>
+
+<footer>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary">Önceki Sayfa</button>
+        <button type="button" class="btn btn-secondary">Sonraki Sayfa</button>
+    </div>
+</footer>

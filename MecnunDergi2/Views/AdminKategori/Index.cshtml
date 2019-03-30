@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MecnunDergi2.Models.Kategori>
+
+@{
+    ViewBag.Title = "Mecnun Dergi - Kategoriler";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>KATEGORİLER</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kategori", "Create",null,new {@class="btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAdı)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriAdı)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.KategoriId },new {@class="btn btn-warning" }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.KategoriId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

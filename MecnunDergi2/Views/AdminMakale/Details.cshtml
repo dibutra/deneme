@@ -1,0 +1,74 @@
+﻿@model MecnunDergi2.Models.Makale
+
+@{
+    ViewBag.Title = "Mecnun Dergi - Gönderi Detayı";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DETAY</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.İcerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.İcerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UyeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UyeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Okunma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Okunma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.KategoriAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.KategoriAdı)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.MakaleId }, new { @class = "btn btn-warning" }) |
+    @Html.ActionLink("Listeye Dön", "Index", null, new { @class = "btn btn-primary" })
+</p>

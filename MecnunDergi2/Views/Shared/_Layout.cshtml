@@ -1,0 +1,151 @@
+﻿
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> @ViewBag.Title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/css/blog-home.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default " role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span><a class="navbar-brand" href="@Url.Action("Index","Home")">Mecnun Dergi</a></span>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                @*<ul class="nav navbar-nav" style="float:right">
+                        <li>
+                            <a href="/Home/Hakkımızda">Hakkımızda</a>
+                        </li>
+                        <li>
+                            <a href="/Home/İletisim">İletişim</a>
+                        </li>
+                    </ul>*@
+
+                <ul class="nav navbar-nav navbar-right top-nav">
+
+                    @if (Session["uyeid"] != null)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> @Session["kullaniciadi"].ToString() <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+
+                                <li>
+                                    <a href="@Url.Action("Details", "Uye")/@Session["uyeid"]"><i class="fa fa-fw fa-user"></i> Profil</a>
+                                </li>
+
+                                @if (Convert.ToInt32(Session["yetkiid"]) == 1)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Index", "Admin")" target="_blank"><i class="fa fa-fw fa-gear"></i> Admin Paneli</a>
+                                    </li>
+                                }
+
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.Action("Logout", "Uye")"><i class="fa fa-fw fa-power-off"></i> Çıkış</a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="@Url.Action("Logın", "Uye")">Giriş</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Create","Uye")">Üye Ol</a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+                @RenderBody()
+
+            </div>
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Site İçi Arama</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    @{ 
+                        Html.RenderAction("KategoriPartial", "Home");
+                    }
+                </div>
+
+
+                <!-- Side Widget Well -->
+                <div class="well img-circle img-responsive">
+                    <h4>En Çok Okunanlar</h4>
+
+                </div>
+            </div>
+        </div>
+        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+
+            <br /> 
+            <br /> 
+            <!-- /.row -->
+            <hr>
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>
+                            Mecnun Dergi &copy; @DateTime.Now.Year | <span><a href="https://www.instagram.com/mecnun_dergi/" target="_blank"> <img width="25" src="https://www.abilityfirst.org/wp-content/uploads/2018/06/Instagram-circle-icon-1.png" /></a> </span> <span style="float:right"> <a target="_blank" href="http://shnsoftware.tk/"> SHN Software</a> </span>
+                        </p>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </footer>
+        </div>
+        <!-- /.container -->
+        <!-- jQuery -->
+        <script src="~/Content/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/Content/js/bootstrap.min.js"></script>
+</body>
+</html>
